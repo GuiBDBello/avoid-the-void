@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://x8lg1hcg1cx8"]
+[gd_scene load_steps=8 format=3 uid="uid://x8lg1hcg1cx8"]
 
 [ext_resource type="PackedScene" uid="uid://cekcd7meexiks" path="res://scenes/player.tscn" id="1_3dw3o"]
+[ext_resource type="Script" path="res://scripts/static_platform.gd" id="1_drwat"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_56skx"]
 
@@ -39,9 +40,10 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_ar0bb")
 
 [node name="Platform3" type="MeshInstance3D" parent="Platforms"]
-transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 2, -10, 4, 0)
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 2, -2, 4, 0)
 mesh = SubResource("BoxMesh_56skx")
 skeleton = NodePath("../..")
+script = ExtResource("1_drwat")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform3"]
 
@@ -49,9 +51,10 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_ar0bb")
 
 [node name="Platform4" type="MeshInstance3D" parent="Platforms"]
-transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 2, -14, 8, 0)
+transform = Transform3D(20, 0, 0, 0, 3, 0, 0, 0, 2, -14, 5, 0)
 mesh = SubResource("BoxMesh_56skx")
 skeleton = NodePath("../..")
+script = ExtResource("1_drwat")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform4"]
 
@@ -59,13 +62,25 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_ar0bb")
 
 [node name="Platform5" type="MeshInstance3D" parent="Platforms"]
-transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 2, 14, 13, 0)
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 2, 14, 9, 0)
 mesh = SubResource("BoxMesh_56skx")
 skeleton = NodePath("../..")
+script = ExtResource("1_drwat")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform5"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Platform5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ar0bb")
+
+[node name="Platform6" type="MeshInstance3D" parent="Platforms"]
+transform = Transform3D(48, 0, 0, 0, 1, 0, 0, 0, 2, 0, 14, 0)
+mesh = SubResource("BoxMesh_56skx")
+skeleton = NodePath("../..")
+script = ExtResource("1_drwat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Platform6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ar0bb")
 
 [node name="Walls" type="Node" parent="."]
@@ -94,8 +109,27 @@ transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0
 [node name="Player" parent="." instance=ExtResource("1_3dw3o")]
 jump_height = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
+[node name="Main Camera" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 5, 10)
+cull_mask = 1048573
+projection = 1
+size = 20.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Main Camera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Player/Main Camera/SubViewportContainer"]
+transparent_bg = true
+size = Vector2i(1152, 648)
+
+[node name="Player Camera" type="Camera3D" parent="Player/Main Camera/SubViewportContainer/SubViewport"]
+cull_mask = 2
+projection = 1
+size = 20.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
