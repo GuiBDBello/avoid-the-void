@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5aac8esoof37"]
+
+[ext_resource type="Script" path="res://scripts/falling_platform_spawner.gd" id="1_sal2k"]
+
+[node name="Falling Platform Spawner" type="Node3D"]
+script = ExtResource("1_sal2k")
+
+[node name="Spawn Platform" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Spawn Platform" to="." method="_on_spawn_platform_timeout"]
