@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://x8lg1hcg1cx8"]
+[gd_scene load_steps=18 format=3 uid="uid://x8lg1hcg1cx8"]
 
 [ext_resource type="PackedScene" uid="uid://cekcd7meexiks" path="res://scenes/player.tscn" id="1_3dw3o"]
-[ext_resource type="Script" path="res://scripts/static_platform.gd" id="1_drwat"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_56skx"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ar0bb"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_5box3"]
+[ext_resource type="PackedScene" uid="uid://d1n5x0lv82ux1" path="res://scenes/static_platform.tscn" id="1_75ebt"]
+[ext_resource type="PackedScene" uid="uid://dm4igqobckdf1" path="res://scenes/game_menu.tscn" id="2_3huco"]
+[ext_resource type="PackedScene" uid="uid://b5aac8esoof37" path="res://scenes/falling_platform_spawner.tscn" id="3_hx4ah"]
+[ext_resource type="PackedScene" uid="uid://cr86qif8d8vv" path="res://scenes/platform_destroyer.tscn" id="3_yr0d4"]
+[ext_resource type="PackedScene" uid="uid://db14txptqmxt8" path="res://scenes/falling_platform_big.tscn" id="4_dm2k7"]
+[ext_resource type="PackedScene" uid="uid://boftviapeutf4" path="res://scenes/falling_platform_mid.tscn" id="6_31jdo"]
+[ext_resource type="PackedScene" uid="uid://oyklb03jgtbm" path="res://scenes/the_void.tscn" id="7_xi33b"]
+[ext_resource type="PackedScene" uid="uid://btmlurl47svwv" path="res://scenes/rocketship.tscn" id="10_1b76q"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_f13tk"]
 
@@ -16,77 +19,107 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jnejj"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxMesh" id="BoxMesh_56skx"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ar0bb"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cxut2"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ts37e"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [node name="Game" type="Node"]
+script = ExtResource("1_5box3")
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(52, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
-mesh = SubResource("BoxMesh_56skx")
+[node name="Game Menu" parent="." instance=ExtResource("2_3huco")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+[node name="Static Platforms" type="Node" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ar0bb")
+[node name="Static Platform4" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 40, 0)
 
-[node name="Platforms" type="Node" parent="."]
+[node name="Static Platform10" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 80, 0)
 
-[node name="Platform2" type="MeshInstance3D" parent="Platforms"]
-transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 2, 14, 1, 0)
-mesh = SubResource("BoxMesh_56skx")
-skeleton = NodePath("../..")
+[node name="Static Platform11" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 120, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform2"]
+[node name="Static Platform12" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 160, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Platform2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ar0bb")
+[node name="Static Platform13" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 200, 0)
 
-[node name="Platform3" type="MeshInstance3D" parent="Platforms"]
+[node name="Static Platform" parent="Static Platforms" instance=ExtResource("1_75ebt")]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 2, -2, 4, 0)
-mesh = SubResource("BoxMesh_56skx")
-skeleton = NodePath("../..")
-script = ExtResource("1_drwat")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform3"]
+[node name="Static Platform2" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 2, -6.5, 5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Platform3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ar0bb")
+[node name="Static Platform3" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2, 6.5, 9, 0)
 
-[node name="Platform4" type="MeshInstance3D" parent="Platforms"]
-transform = Transform3D(20, 0, 0, 0, 3, 0, 0, 0, 2, -14, 5, 0)
-mesh = SubResource("BoxMesh_56skx")
-skeleton = NodePath("../..")
-script = ExtResource("1_drwat")
+[node name="Static Platform5" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2, 6.5, 14, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform4"]
+[node name="Static Platform6" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 2, 4, 19, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Platform4/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ar0bb")
+[node name="Static Platform7" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 2, -4, 23, 0)
 
-[node name="Platform5" type="MeshInstance3D" parent="Platforms"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 2, 14, 9, 0)
-mesh = SubResource("BoxMesh_56skx")
-skeleton = NodePath("../..")
-script = ExtResource("1_drwat")
+[node name="Static Platform8" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 2, -7, 27, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform5"]
+[node name="Static Platform9" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 2, 6, 32, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Platform5/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ar0bb")
+[node name="Static Platform14" parent="Static Platforms" instance=ExtResource("1_75ebt")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 8, 36, 0)
 
-[node name="Platform6" type="MeshInstance3D" parent="Platforms"]
-transform = Transform3D(48, 0, 0, 0, 1, 0, 0, 0, 2, 0, 14, 0)
-mesh = SubResource("BoxMesh_56skx")
-skeleton = NodePath("../..")
-script = ExtResource("1_drwat")
+[node name="Spawners" type="Node" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Platform6"]
+[node name="Falling Platform Spawner BIG" parent="Spawners" node_paths=PackedStringArray("parent_node") instance=ExtResource("3_hx4ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 79.5, 0)
+parent_node = NodePath("../../Spawned Falling Platforms")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Platform6/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ar0bb")
+[node name="Falling Platform Spawner MID" parent="Spawners" node_paths=PackedStringArray("parent_node") instance=ExtResource("3_hx4ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 119.5, 0)
+parent_node = NodePath("../../Spawned Falling Platforms")
+
+[node name="Falling Platform Spawner SM" parent="Spawners" node_paths=PackedStringArray("parent_node") instance=ExtResource("3_hx4ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 159.5, 0)
+parent_node = NodePath("../../Spawned Falling Platforms")
+
+[node name="Falling Platform Spawner XSM" parent="Spawners" node_paths=PackedStringArray("parent_node") instance=ExtResource("3_hx4ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+parent_node = NodePath("../../Spawned Falling Platforms")
+
+[node name="Destroyers" type="Node" parent="."]
+
+[node name="Platform Destroyer" parent="Destroyers" instance=ExtResource("3_yr0d4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+
+[node name="Platform Destroyer2" parent="Destroyers" instance=ExtResource("3_yr0d4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80.4, 0)
+
+[node name="Platform Destroyer3" parent="Destroyers" instance=ExtResource("3_yr0d4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 120.4, 0)
+
+[node name="Platform Destroyer4" parent="Destroyers" instance=ExtResource("3_yr0d4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 160.4, 0)
+
+[node name="Platform Destroyer5" parent="Destroyers" instance=ExtResource("3_yr0d4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 160.4, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 10, 0)
 
 [node name="Walls" type="Node" parent="."]
 
 [node name="Wall" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(2, 0, 0, 0, 100, 0, 0, 0, 2, -25, 50, 0)
+transform = Transform3D(2, 0, 0, 0, 200, 0, 0, 0, 2, -10, 100, 0)
 mesh = SubResource("BoxMesh_f13tk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall"]
@@ -95,7 +128,7 @@ mesh = SubResource("BoxMesh_f13tk")
 shape = SubResource("ConcavePolygonShape3D_k8av6")
 
 [node name="Wall2" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(2, 0, 0, 0, 100, 0, 0, 0, 2, 25, 50, 0)
+transform = Transform3D(2, 0, 0, 0, 200, 0, 0, 0, 2, 10, 100, 0)
 mesh = SubResource("BoxMesh_f13tk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall2"]
@@ -103,17 +136,107 @@ mesh = SubResource("BoxMesh_f13tk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jnejj")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 10, 0)
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(22, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
+mesh = SubResource("BoxMesh_56skx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ar0bb")
+
+[node name="Platform" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 2, 6.5, 1, 0)
+mesh = SubResource("BoxMesh_cxut2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ts37e")
+
+[node name="Default Falling Platforms (Big)" type="Node" parent="."]
+
+[node name="Falling Platform Big8" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 7.27186, 71.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big9" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, -6.87007, 75.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big10" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 7.09355, 79.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big11" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 7.98769, 59.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big12" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, -6.94551, 63.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big13" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 3.10494, 67.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big14" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 4.64708, 55.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big15" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 43.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big16" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 5, 47.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Falling Platform Big17" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, -5, 51.5, 0)
+skeleton = NodePath("../..")
+
+[node name="Default Falling Platforms (Mid)" type="Node" parent="."]
+
+[node name="Falling Platform Mid" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 4.63444, 119.5, 0)
+
+[node name="Falling Platform Mid2" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, -7.09661, 115.5, 0)
+
+[node name="Falling Platform Mid3" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 7.71644, 111.5, 0)
+
+[node name="Falling Platform Mid4" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, -1.40297, 107.5, 0)
+
+[node name="Falling Platform Mid5" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 5.79356, 103.5, 0)
+
+[node name="Falling Platform Mid6" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 3, 99.5, 0)
+
+[node name="Falling Platform Mid7" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, -3, 95.5, 0)
+
+[node name="Falling Platform Mid8" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 91.5, 0)
+
+[node name="Spawned Falling Platforms" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_3dw3o")]
-jump_height = 5.0
+collision_mask = 5
+jump_peak_time = 0.4
+jump_fall_time = 0.3
+jump_height = 6.0
 
 [node name="Main Camera" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 5, 10)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 5, 15)
 cull_mask = 1048573
-projection = 1
-size = 20.0
+fov = 90.0
+size = 30.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Main Camera"]
 anchors_preset = 15
@@ -121,15 +244,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Player/Main Camera/SubViewportContainer"]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
 [node name="Player Camera" type="Camera3D" parent="Player/Main Camera/SubViewportContainer/SubViewport"]
 cull_mask = 2
-projection = 1
+fov = 90.0
 size = 20.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+[node name="The Void" parent="." instance=ExtResource("7_xi33b")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 20, 0, -50, 0)
+
+[node name="Rocketship" parent="." instance=ExtResource("10_1b76q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200.5, 0)
+
+[connection signal="player_absorbed" from="The Void" to="." method="_on_the_void_player_absorbed"]
+[connection signal="player_reached_rocketship" from="Rocketship" to="." method="_on_rocketship_player_reached_rocketship"]

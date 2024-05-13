@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr86qif8d8vv"]
+
+[ext_resource type="Script" path="res://scripts/platform_destroyer.gd" id="1_e3oqx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cpasf"]
+size = Vector3(20, 0.1, 1)
+
+[node name="Platform Destroyer" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.4, 0)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_e3oqx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cpasf")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
