@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://btmlurl47svwv"]
+
+[ext_resource type="Script" path="res://scripts/rocketship.gd" id="1_7xiqk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucjk7"]
+size = Vector3(1, 2.151, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jawh3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w34h7"]
+
+[node name="Rocketship" type="Node3D"]
+script = ExtResource("1_7xiqk")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.5, 0)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9245, 0)
+shape = SubResource("BoxShape3D_ucjk7")
+
+[node name="Rocketship Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 6.5, 0)
+mesh = SubResource("CylinderMesh_jawh3")
+
+[node name="Elevator Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("BoxMesh_w34h7")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

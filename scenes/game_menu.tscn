@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm4igqobckdf1"]
+
+[ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_c4804"]
+
+[node name="Game Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4804")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game Over Menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Game Over Menu"]
+custom_minimum_size = Vector2(360, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Game Over Menu/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Game Over Menu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "You were absorbed by The Void."
+
+[node name="Restart Button" type="Button" parent="CanvasLayer/Game Over Menu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Main Menu Button" type="Button" parent="CanvasLayer/Game Over Menu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="End Game Menu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/End Game Menu"]
+custom_minimum_size = Vector2(360, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/End Game Menu/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/End Game Menu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "You escaped The Void!
+Time: 00:00.000"
+
+[node name="Restart Button" type="Button" parent="CanvasLayer/End Game Menu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Main Menu Button" type="Button" parent="CanvasLayer/End Game Menu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="CanvasLayer/Game Over Menu/Panel/VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Game Over Menu/Panel/VBoxContainer/Main Menu Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/End Game Menu/Panel/VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/End Game Menu/Panel/VBoxContainer/Main Menu Button" to="." method="_on_quit_button_pressed"]
