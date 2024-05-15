@@ -17,7 +17,7 @@ func get_random_position() -> Vector3:
 	return Vector3(randi_range(-8, 8), self.position.y, 0)
 
 
-func get_platform() -> MeshInstance3D:
+func get_platform() -> Node3D:
 	var platform
 	match self.position.y:
 		79.5:
@@ -34,6 +34,6 @@ func get_platform() -> MeshInstance3D:
 	return platform
 
 
-func spawn_platform(platform: MeshInstance3D, spawn_position: Vector3) -> void:
+func spawn_platform(platform: Node3D, spawn_position: Vector3) -> void:
 	platform.position = spawn_position
 	parent_node.add_child(platform)

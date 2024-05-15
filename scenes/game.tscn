@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://x8lg1hcg1cx8"]
+[gd_scene load_steps=19 format=3 uid="uid://x8lg1hcg1cx8"]
 
 [ext_resource type="PackedScene" uid="uid://cekcd7meexiks" path="res://scenes/player.tscn" id="1_3dw3o"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5box3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://db14txptqmxt8" path="res://scenes/falling_platform_big.tscn" id="4_dm2k7"]
 [ext_resource type="PackedScene" uid="uid://boftviapeutf4" path="res://scenes/falling_platform_mid.tscn" id="6_31jdo"]
 [ext_resource type="PackedScene" uid="uid://oyklb03jgtbm" path="res://scenes/the_void.tscn" id="7_xi33b"]
+[ext_resource type="PackedScene" uid="uid://del6ndj0lnx22" path="res://scenes/falling_platform_sm.tscn" id="8_0n5mt"]
 [ext_resource type="PackedScene" uid="uid://btmlurl47svwv" path="res://scenes/rocketship.tscn" id="10_1b76q"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_f13tk"]
@@ -37,46 +38,46 @@ script = ExtResource("1_5box3")
 [node name="Static Platforms" type="Node" parent="."]
 
 [node name="Static Platform4" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 40, 0)
+transform = Transform3D(1.1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 40, 0)
 
 [node name="Static Platform10" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 80, 0)
+transform = Transform3D(1.1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 80, 0)
 
 [node name="Static Platform11" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 120, 0)
+transform = Transform3D(1.1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 120, 0)
 
 [node name="Static Platform12" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 160, 0)
+transform = Transform3D(1.1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 160, 0)
 
 [node name="Static Platform13" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 2, 0, 200, 0)
+transform = Transform3D(1.1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 200, 0)
 
 [node name="Static Platform" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 2, -2, 4, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, -2, 4, 0)
 
 [node name="Static Platform2" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 2, -6.5, 5, 0)
+transform = Transform3D(0.25, 0, 0, 0, 1.5, 0, 0, 0, 1, -6.5, 5, 0)
 
 [node name="Static Platform3" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2, 6.5, 9, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.5, 0, 0, 0, 1, 4, 9, 0)
 
 [node name="Static Platform5" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2, 6.5, 14, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.5, 0, 0, 0, 1, -6.90445, 14, 0)
 
 [node name="Static Platform6" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 2, 4, 19, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 5, 19, 0)
 
 [node name="Static Platform7" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 2, -4, 23, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.5, 0, 0, 0, 1, -4, 23, 0)
 
 [node name="Static Platform8" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 2, -7, 27, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.5, 0, 0, 0, 1, -7, 27, 0)
 
 [node name="Static Platform9" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 2, 6, 32, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.501, 0, 0, 0, 1.003, 6, 32, 0)
 
 [node name="Static Platform14" parent="Static Platforms" instance=ExtResource("1_75ebt")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 8, 36, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 1, 8, 36, 0)
 
 [node name="Spawners" type="Node" parent="."]
 
@@ -158,73 +159,92 @@ shape = SubResource("ConcavePolygonShape3D_ts37e")
 
 [node name="Default Falling Platforms (Big)" type="Node" parent="."]
 
+[node name="Falling Platform Big" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 79.5, 0)
+
+[node name="Falling Platform Big2" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 75.5, 0)
+
+[node name="Falling Platform Big3" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 71.5, 0)
+
+[node name="Falling Platform Big4" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 67.5, 0)
+
+[node name="Falling Platform Big5" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 63.5, 0)
+
+[node name="Falling Platform Big6" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 59.5, 0)
+
+[node name="Falling Platform Big7" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 55.5, 0)
+
 [node name="Falling Platform Big8" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 7.27186, 71.5, 0)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 51.5, 0)
 
 [node name="Falling Platform Big9" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, -6.87007, 75.5, 0)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 47.5, 0)
 
 [node name="Falling Platform Big10" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 7.09355, 79.5, 0)
-skeleton = NodePath("../..")
-
-[node name="Falling Platform Big11" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 7.98769, 59.5, 0)
-skeleton = NodePath("../..")
-
-[node name="Falling Platform Big12" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, -6.94551, 63.5, 0)
-skeleton = NodePath("../..")
-
-[node name="Falling Platform Big13" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 3.10494, 67.5, 0)
-skeleton = NodePath("../..")
-
-[node name="Falling Platform Big14" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 4.64708, 55.5, 0)
-skeleton = NodePath("../..")
-
-[node name="Falling Platform Big15" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 43.5, 0)
-skeleton = NodePath("../..")
-
-[node name="Falling Platform Big16" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, 5, 47.5, 0)
-skeleton = NodePath("../..")
-
-[node name="Falling Platform Big17" parent="Default Falling Platforms (Big)" instance=ExtResource("4_dm2k7")]
-transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 1, -5, 51.5, 0)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 47.5, 0)
 
 [node name="Default Falling Platforms (Mid)" type="Node" parent="."]
 
 [node name="Falling Platform Mid" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 4.63444, 119.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 119.5, 0)
 
 [node name="Falling Platform Mid2" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, -7.09661, 115.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 115.5, 0)
 
 [node name="Falling Platform Mid3" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 7.71644, 111.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 111.5, 0)
 
 [node name="Falling Platform Mid4" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, -1.40297, 107.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 107.5, 0)
 
 [node name="Falling Platform Mid5" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 5.79356, 103.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 103.5, 0)
 
 [node name="Falling Platform Mid6" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 3, 99.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 99.5, 0)
 
 [node name="Falling Platform Mid7" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, -3, 95.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 95.5, 0)
 
 [node name="Falling Platform Mid8" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 91.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 91.5, 0)
+
+[node name="Falling Platform Mid9" parent="Default Falling Platforms (Mid)" instance=ExtResource("6_31jdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 87.5, 0)
+
+[node name="Default Falling Platforms (Sm)" type="Node" parent="."]
 
 [node name="Spawned Falling Platforms" type="Node" parent="."]
+
+[node name="Falling Platform Small" parent="Spawned Falling Platforms" instance=ExtResource("8_0n5mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 159.5, 0)
+
+[node name="Falling Platform Small2" parent="Spawned Falling Platforms" instance=ExtResource("8_0n5mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 155.5, 0)
+
+[node name="Falling Platform Small3" parent="Spawned Falling Platforms" instance=ExtResource("8_0n5mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 151.5, 0)
+
+[node name="Falling Platform Small4" parent="Spawned Falling Platforms" instance=ExtResource("8_0n5mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 147.5, 0)
+
+[node name="Falling Platform Small5" parent="Spawned Falling Platforms" instance=ExtResource("8_0n5mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 143.5, 0)
+
+[node name="Falling Platform Small6" parent="Spawned Falling Platforms" instance=ExtResource("8_0n5mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 139.5, 0)
+
+[node name="Falling Platform Small7" parent="Spawned Falling Platforms" instance=ExtResource("8_0n5mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 135.5, 0)
+
+[node name="Falling Platform Small8" parent="Spawned Falling Platforms" instance=ExtResource("8_0n5mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 131.5, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_3dw3o")]
 collision_mask = 5

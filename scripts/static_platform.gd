@@ -1,7 +1,7 @@
-extends MeshInstance3D
+extends Node3D
 
 
-@onready var collision_shape: CollisionShape3D = $StaticBody3D/CollisionShape3D
+@onready var collision_shape: CollisionShape3D = $Graphics/StaticBody3D/CollisionShape3D
 
 @onready var player: CharacterBody3D = $"../../Player"
 

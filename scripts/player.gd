@@ -21,6 +21,9 @@ var fall_gravity: float = 5.0
 @onready var player_camera: Camera3D = $"Main Camera/SubViewportContainer/SubViewport/Player Camera"
 @onready var sub_viewport: SubViewport = $"Main Camera/SubViewportContainer/SubViewport"
 
+@onready var armature: Node3D = $Graphics/Armature_002
+@onready var animation_tree: AnimationTree = $AnimationTree
+
 
 func _ready() -> void:
 	calculate_movement_parameters()
@@ -65,6 +68,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Handle jump.
 		if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up")) and is_on_floor():
+			animation_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			velocity.y = jump_velocity
 
 		# Get the input direction and handle the movement/deceleration.
@@ -72,9 +76,20 @@ func _physics_process(delta: float) -> void:
 		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 		if direction:
-			velocity.x = direction.x * speed
+			#velocity.x = direction.x * speed
+			velocity.x = lerp(velocity.x, direction.x * speed, 0.5)
+			armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-velocity.x, -velocity.z), 0.1)
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
+			#velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.x = lerp(velocity.x, direction.x * speed, 0.5)
+		
+		if is_on_floor():
+			if direction.length() > 0:
+				animation_tree.set("parameters/Movement/transition_request", "Run")
+			else:
+				animation_tree.set("parameters/Movement/transition_request", "Idle")
+		else:
+			animation_tree.set("parameters/Movement/transition_request", "Fall")
 
 		move_and_slide()
 

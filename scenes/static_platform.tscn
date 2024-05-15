@@ -2,21 +2,23 @@
 
 [ext_resource type="Script" path="res://scripts/static_platform.gd" id="1_hg5a0"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_drdyf"]
+[sub_resource type="BoxMesh" id="BoxMesh_nfkaf"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p75ly"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[node name="Static Platform" type="MeshInstance3D"]
-transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 2, 14, 1, 0)
-layers = 4
-mesh = SubResource("BoxMesh_drdyf")
-skeleton = NodePath("../..")
+[node name="Static Platform" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, 0)
 script = ExtResource("1_hg5a0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Graphics" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+layers = 4
+mesh = SubResource("BoxMesh_nfkaf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Graphics"]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_p75ly")
