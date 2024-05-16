@@ -278,7 +278,7 @@ fov = 90.0
 size = 20.0
 
 [node name="The Void" parent="." instance=ExtResource("7_xi33b")]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 20, 0, -50, 0)
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -50, 0)
 
 [node name="Rocketship" parent="." instance=ExtResource("10_1b76q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200.5, 0)
