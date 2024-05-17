@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://c33324e8x3pv5"]
 
-[ext_resource type="Texture2D" uid="uid://cchagnmcee8wd" path="res://assets/portal/T_VFX_CircleFit1.png" id="2_q4wrr"]
+[ext_resource type="Texture2D" uid="uid://cchagnmcee8wd" path="res://assets/vfx/T_VFX_CircleFit1.png" id="2_q4wrr"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_7frul"]
 parameter_name = "Color_Intensity"
@@ -119,7 +119,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-762.244, -199.035)
 modes/cull = 2
 flags/unshaded = true
 nodes/fragment/3/node = SubResource("VisualShaderNodeUVPolarCoord_7vw3m")

@@ -12,7 +12,6 @@ transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -40, 0)
 script = ExtResource("1_5ayvg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 layers = 16
 mesh = SubResource("BoxMesh_vsu3r")

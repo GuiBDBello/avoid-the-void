@@ -1,9 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://x8lg1hcg1cx8"]
+[gd_scene load_steps=27 format=3 uid="uid://x8lg1hcg1cx8"]
 
 [ext_resource type="PackedScene" uid="uid://cekcd7meexiks" path="res://scenes/player.tscn" id="1_3dw3o"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5box3"]
 [ext_resource type="PackedScene" uid="uid://d1n5x0lv82ux1" path="res://scenes/static_platform.tscn" id="1_75ebt"]
 [ext_resource type="PackedScene" uid="uid://dm4igqobckdf1" path="res://scenes/game_menu.tscn" id="2_3huco"]
+[ext_resource type="PackedScene" uid="uid://8bsvmpdppcal" path="res://scenes/blur.tscn" id="2_fgk22"]
+[ext_resource type="Texture2D" uid="uid://b87i3cca5k57a" path="res://assets/ground-texture.png" id="2_vg3g4"]
+[ext_resource type="PackedScene" uid="uid://cuwenhk52ciyx" path="res://assets/mountain.glb" id="3_dohn0"]
 [ext_resource type="PackedScene" uid="uid://b5aac8esoof37" path="res://scenes/falling_platform_spawner.tscn" id="3_hx4ah"]
 [ext_resource type="PackedScene" uid="uid://cr86qif8d8vv" path="res://scenes/platform_destroyer.tscn" id="3_yr0d4"]
 [ext_resource type="PackedScene" uid="uid://db14txptqmxt8" path="res://scenes/falling_platform_big.tscn" id="4_dm2k7"]
@@ -11,6 +14,23 @@
 [ext_resource type="PackedScene" uid="uid://oyklb03jgtbm" path="res://scenes/the_void.tscn" id="7_xi33b"]
 [ext_resource type="PackedScene" uid="uid://del6ndj0lnx22" path="res://scenes/falling_platform_sm.tscn" id="8_0n5mt"]
 [ext_resource type="PackedScene" uid="uid://btmlurl47svwv" path="res://scenes/rocketship.tscn" id="10_1b76q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_echf1"]
+sky_top_color = Color(0.70757, 0.00384663, 0.226354, 1)
+sky_horizon_color = Color(0.331766, 0, 0.0293527, 1)
+ground_bottom_color = Color(0.166315, 0, 0.00163076, 1)
+ground_horizon_color = Color(0.340918, 0.00600741, 0.0562264, 1)
+
+[sub_resource type="Sky" id="Sky_bk7ok"]
+sky_material = SubResource("ProceduralSkyMaterial_echf1")
+
+[sub_resource type="Environment" id="Environment_wwvhd"]
+sky = SubResource("Sky_bk7ok")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2q4oa"]
+albedo_texture = ExtResource("2_vg3g4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wm8jr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_f13tk"]
 
@@ -32,6 +52,41 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [node name="Game" type="Node"]
 script = ExtResource("1_5box3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wwvhd")
+
+[node name="Blur" parent="." instance=ExtResource("2_fgk22")]
+transform = Transform3D(20, 0, 0, 0, 200, 0, 0, 0, 1, 0, 99, -1)
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -50, 0)
+material_override = SubResource("StandardMaterial3D_2q4oa")
+mesh = SubResource("PlaneMesh_wm8jr")
+skeleton = NodePath("../..")
+
+[node name="mountain" parent="Background" instance=ExtResource("3_dohn0")]
+transform = Transform3D(-296.842, 0, 268.114, 0, 400, 0, -268.114, 0, -296.842, -100, -50, -1044.82)
+
+[node name="mountain4" parent="Background" instance=ExtResource("3_dohn0")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -641.253, -50, -1257.12)
+
+[node name="mountain5" parent="Background" instance=ExtResource("3_dohn0")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -1050.27, -50, -1013.93)
+
+[node name="mountain7" parent="Background" instance=ExtResource("3_dohn0")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -1290.39, -50, -666.891)
+
+[node name="mountain6" parent="Background" instance=ExtResource("3_dohn0")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1186.33, -50, -582.394)
+
+[node name="mountain2" parent="Background" instance=ExtResource("3_dohn0")]
+transform = Transform3D(-342.001, 0, 207.45, 0, 400, 0, -207.45, 0, -342.001, 481.002, -50, -1200)
+
+[node name="mountain3" parent="Background" instance=ExtResource("3_dohn0")]
+transform = Transform3D(276.676, 0, 288.878, 0, 400, 0, -288.878, 0, 276.676, 954.028, -50, -969.547)
 
 [node name="Game Menu" parent="." instance=ExtResource("2_3huco")]
 
@@ -137,14 +192,14 @@ mesh = SubResource("BoxMesh_f13tk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jnejj")
 
-[node name="Ground" type="MeshInstance3D" parent="."]
+[node name="TowerBase" type="MeshInstance3D" parent="."]
 transform = Transform3D(22, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
 mesh = SubResource("BoxMesh_56skx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+[node name="StaticBody3D" type="StaticBody3D" parent="TowerBase"]
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TowerBase/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ar0bb")
 
 [node name="Platform" type="MeshInstance3D" parent="."]
