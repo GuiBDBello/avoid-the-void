@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://x8lg1hcg1cx8"]
+[gd_scene load_steps=28 format=3 uid="uid://x8lg1hcg1cx8"]
 
 [ext_resource type="PackedScene" uid="uid://cekcd7meexiks" path="res://scenes/player.tscn" id="1_3dw3o"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5box3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dm4igqobckdf1" path="res://scenes/game_menu.tscn" id="2_3huco"]
 [ext_resource type="PackedScene" uid="uid://8bsvmpdppcal" path="res://scenes/blur.tscn" id="2_fgk22"]
 [ext_resource type="Texture2D" uid="uid://b87i3cca5k57a" path="res://assets/ground-texture.png" id="2_vg3g4"]
+[ext_resource type="AudioStream" uid="uid://c3kp6h0wkvdf1" path="res://assets/sfx/game.wav" id="3_blsc5"]
 [ext_resource type="PackedScene" uid="uid://cuwenhk52ciyx" path="res://assets/mountain.glb" id="3_dohn0"]
 [ext_resource type="PackedScene" uid="uid://b5aac8esoof37" path="res://scenes/falling_platform_spawner.tscn" id="3_hx4ah"]
 [ext_resource type="PackedScene" uid="uid://cr86qif8d8vv" path="res://scenes/platform_destroyer.tscn" id="3_yr0d4"]
@@ -57,7 +58,14 @@ script = ExtResource("1_5box3")
 environment = SubResource("Environment_wwvhd")
 
 [node name="Blur" parent="." instance=ExtResource("2_fgk22")]
-transform = Transform3D(20, 0, 0, 0, 200, 0, 0, 0, 1, 0, 99, -1)
+transform = Transform3D(20, 0, 0, 0, 200, 0, 0, 0, 1, 0, 100, 0)
+
+[node name="Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("3_blsc5")
+autoplay = true
+attenuation = 1e-05
 
 [node name="Background" type="Node" parent="."]
 

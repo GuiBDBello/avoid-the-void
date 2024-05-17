@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://8bsvmpdppcal"]
+
+[node name="Blur" type="Node3D"]
