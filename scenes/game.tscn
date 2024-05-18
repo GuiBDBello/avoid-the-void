@@ -1,11 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://x8lg1hcg1cx8"]
+[gd_scene load_steps=33 format=3 uid="uid://x8lg1hcg1cx8"]
 
 [ext_resource type="PackedScene" uid="uid://cekcd7meexiks" path="res://scenes/player.tscn" id="1_3dw3o"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5box3"]
 [ext_resource type="PackedScene" uid="uid://d1n5x0lv82ux1" path="res://scenes/static_platform.tscn" id="1_75ebt"]
 [ext_resource type="PackedScene" uid="uid://dm4igqobckdf1" path="res://scenes/game_menu.tscn" id="2_3huco"]
 [ext_resource type="PackedScene" uid="uid://bl2pfpk7w2unc" path="res://scenes/game_manager.tscn" id="2_5fbom"]
-[ext_resource type="PackedScene" uid="uid://8bsvmpdppcal" path="res://scenes/blur.tscn" id="2_fgk22"]
 [ext_resource type="Texture2D" uid="uid://b87i3cca5k57a" path="res://assets/ground-texture.png" id="2_vg3g4"]
 [ext_resource type="AudioStream" uid="uid://c3kp6h0wkvdf1" path="res://assets/sfx/game.wav" id="3_blsc5"]
 [ext_resource type="PackedScene" uid="uid://cuwenhk52ciyx" path="res://assets/mountain.glb" id="3_dohn0"]
@@ -16,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://oyklb03jgtbm" path="res://scenes/the_void.tscn" id="7_xi33b"]
 [ext_resource type="PackedScene" uid="uid://del6ndj0lnx22" path="res://scenes/falling_platform_sm.tscn" id="8_0n5mt"]
 [ext_resource type="PackedScene" uid="uid://btmlurl47svwv" path="res://scenes/rocketship.tscn" id="10_1b76q"]
+[ext_resource type="Script" path="res://scripts/blur.gd" id="15_v4ydx"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="15_wh2d0"]
 
 [sub_resource type="Environment" id="Environment_wwvhd"]
 background_mode = 2
@@ -129,6 +130,19 @@ _data = {
 "cutscene_game_start": SubResource("Animation_ouxo6")
 }
 
+[sub_resource type="QuadMesh" id="QuadMesh_0t557"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu75l"]
+render_priority = -1
+shader = ExtResource("15_wh2d0")
+shader_parameter/ray_position = null
+shader_parameter/blur_strength = 6
+shader_parameter/blur_falloff = 0.5
+shader_parameter/blur_near = 0.0
+shader_parameter/blur_far = 250.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2q4oa"]
 albedo_texture = ExtResource("2_vg3g4")
 
@@ -171,8 +185,12 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 0.984807, -0.173648, 0, 0.173648, 0.984807, 0, 205, 10)
 current = true
 
-[node name="Blur" parent="." instance=ExtResource("2_fgk22")]
-transform = Transform3D(20, 0, 0, 0, 200, 0, 0, 0, 1, 0, 100, 0)
+[node name="Blur" type="MeshInstance3D" parent="Cutscene Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+layers = 524288
+mesh = SubResource("QuadMesh_0t557")
+surface_material_override/0 = SubResource("ShaderMaterial_wu75l")
+script = ExtResource("15_v4ydx")
 
 [node name="Music" type="Node" parent="."]
 
@@ -434,6 +452,13 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 cull_mask = 1048573
 current = true
 size = 30.0
+
+[node name="Blur" type="MeshInstance3D" parent="Player/Main Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+layers = 524288
+mesh = SubResource("QuadMesh_0t557")
+surface_material_override/0 = SubResource("ShaderMaterial_wu75l")
+script = ExtResource("15_v4ydx")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Main Camera"]
 anchors_preset = 15
