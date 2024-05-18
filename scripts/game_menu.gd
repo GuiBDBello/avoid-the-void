@@ -12,10 +12,14 @@ func _ready() -> void:
 
 
 func _on_restart_button_pressed() -> void:
+	Transition.transition()
+	await Transition.on_transition_finished
 	get_tree().reload_current_scene()
 
 
 func _on_quit_button_pressed() -> void:
+	Transition.transition()
+	await Transition.on_transition_finished
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 

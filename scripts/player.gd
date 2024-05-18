@@ -30,7 +30,7 @@ func _ready() -> void:
 
 
 func _input(event) -> void:
-	if Game.is_playable:
+	if GameManager.is_playable:
 		if event.is_action_released("jump") or event.is_action_released("move_up"):
 				if velocity.y > 0.0:
 					velocity.y *= 0.5
@@ -44,7 +44,7 @@ func _process(delta) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if Game.is_playable:
+	if GameManager.is_playable:
 		
 		#if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up"):
 			#if velocity.y > 0.0:
@@ -60,7 +60,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("move_down"):
 			var collider = ray_cast.get_collider()
 			if collider is StaticBody3D:
-				print("is staticbody")
 				collision_shape.disabled = true
 				while(ray_cast.get_collider() != null):
 					await get_tree().create_timer(.25).timeout

@@ -8,7 +8,7 @@ signal player_absorbed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if Game.is_playable:
+	if GameManager.is_playable:
 		if position.y < 80:
 			position.y += speed * delta
 		elif position.y < 120:

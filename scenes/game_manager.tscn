@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl2pfpk7w2unc"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_pqvrk"]
+[ext_resource type="Texture2D" uid="uid://cchagnmcee8wd" path="res://assets/vfx/T_VFX_CircleFit1.png" id="2_4f5an"]
+
+[node name="Game Manager" type="Node"]
+script = ExtResource("1_pqvrk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.9999
+offset_top = -54.0
+offset_right = 1026.0
+offset_bottom = 1026.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 33.0
+rounded = true
+fill_mode = 4
+texture_under = ExtResource("2_4f5an")
+texture_progress = ExtResource("2_4f5an")
+tint_under = Color(1, 1, 1, 0)
+tint_over = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -229.0
+offset_top = -38.0
+offset_right = -60.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Hold Spacebar to Skip"

@@ -7,8 +7,8 @@
 render_priority = 0
 shader = ExtResource("1_soq4h")
 shader_parameter/Color_Intensity = 2.5
-shader_parameter/Portal_Color = Color(0.384314, 0, 1, 1)
-shader_parameter/Speed_X_Y = Vector2(-0.3, 0.3)
+shader_parameter/Portal_Color = Color(0.145417, 0.000101652, 0.461058, 1)
+shader_parameter/Speed_X_Y = Vector2(0.3, 0.3)
 shader_parameter/Portal_Texture = ExtResource("2_p4klx")
 
 [sub_resource type="QuadMesh" id="QuadMesh_peus7"]
