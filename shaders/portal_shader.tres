@@ -18,10 +18,12 @@ parameter_name = "Portal_Texture"
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3nsq0"]
+expanded_output_ports = [0]
 source = 5
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeUVPolarCoord" id="VisualShaderNodeUVPolarCoord_7vw3m"]
+default_input_values = [1, Vector2(0.5, 0.5), 2, 1.0, 3, 0.0]
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_f1k24"]
 
@@ -37,6 +39,7 @@ operator = 2
 texture = ExtResource("2_q4wrr")
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_xmv7l"]
+expanded_output_ports = [0]
 parameter_name = "Portal_Color"
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ywp5y"]
@@ -73,7 +76,7 @@ void fragment() {
 // UVPolarCoord:3
 	vec2 n_in3p1 = vec2(0.50000, 0.50000);
 	float n_in3p2 = 1.00000;
-	float n_in3p3 = 1.00000;
+	float n_in3p3 = 0.00000;
 	{
 		vec2 __dir = UV - n_in3p1;
 		float __radius = length(__dir) * 2.0;
@@ -102,10 +105,11 @@ void fragment() {
 	vec4 n_out14p0;
 // Texture2D:14
 	n_out14p0 = texture(Portal_Texture, n_out4p0);
+	float n_out14p1 = n_out14p0.r;
 
 
 // VectorOp:9
-	vec4 n_out9p0 = n_out11p0 * n_out14p0;
+	vec4 n_out9p0 = n_out11p0 * vec4(n_out14p1);
 
 
 // Texture2D:7
@@ -119,6 +123,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-754.199, 223.73)
 modes/cull = 2
 flags/unshaded = true
 nodes/fragment/3/node = SubResource("VisualShaderNodeUVPolarCoord_7vw3m")
@@ -145,4 +150,4 @@ nodes/fragment/13/node = SubResource("VisualShaderNodeTexture2DParameter_mn2ce")
 nodes/fragment/13/position = Vector2(-500, 360)
 nodes/fragment/14/node = SubResource("VisualShaderNodeTexture_3nsq0")
 nodes/fragment/14/position = Vector2(-80, 140)
-nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 4, 2, 7, 0, 0, 1, 9, 0, 0, 0, 10, 0, 11, 0, 8, 0, 11, 1, 11, 0, 9, 0, 12, 0, 6, 1, 13, 0, 14, 2, 4, 0, 14, 0, 14, 0, 9, 1)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 5, 0, 6, 0, 9, 0, 0, 0, 10, 0, 11, 0, 11, 0, 9, 0, 12, 0, 6, 1, 13, 0, 14, 2, 4, 0, 14, 0, 6, 0, 4, 2, 8, 0, 11, 1, 7, 0, 0, 1, 14, 1, 9, 1)

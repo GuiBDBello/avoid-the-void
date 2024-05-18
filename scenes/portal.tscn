@@ -7,7 +7,7 @@
 render_priority = 0
 shader = ExtResource("1_soq4h")
 shader_parameter/Color_Intensity = 2.5
-shader_parameter/Portal_Color = Color(0.145417, 0.000101652, 0.461058, 1)
+shader_parameter/Portal_Color = Color(0.151074, 0.000166581, 0.4338, 1)
 shader_parameter/Speed_X_Y = Vector2(0.3, 0.3)
 shader_parameter/Portal_Texture = ExtResource("2_p4klx")
 
