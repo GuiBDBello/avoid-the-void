@@ -28,6 +28,9 @@ var jump_available: bool
 @export var coyote_time: float = 0.1
 @onready var coyote_timer: Timer = $"Coyote Timer"
 
+var jump_buffer: bool = false
+@export var jump_buffer_time: float = 0.3
+
 
 func _ready() -> void:
 	calculate_movement_parameters()
@@ -68,6 +71,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			jump_available = true
 			coyote_timer.stop()
+			if jump_buffer:
+				jump()
+				jump_buffer = false
 		
 		#if Input.is_action_just_pressed("move_down"):
 			#var collider = ray_cast.get_collider()
@@ -78,9 +84,12 @@ func _physics_process(delta: float) -> void:
 				#collision_shape.disabled = false
 		
 		# Handle jump.
-		if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up")) and jump_available:
-			animation_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-			velocity.y = jump_velocity
+		if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up")):
+			if jump_available:
+				jump()
+			else:
+				jump_buffer = true
+				get_tree().create_timer(jump_buffer_time).timeout.connect(on_jump_buffer_timeout)
 
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
@@ -105,6 +114,11 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 
+func jump() -> void:
+	animation_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	velocity.y = jump_velocity
+
+
 func calculate_movement_parameters() -> void:
 	jump_gravity = (2 * jump_height) / pow(jump_peak_time, 2)
 	fall_gravity = (2 * jump_height) / pow(jump_fall_time, 2)
@@ -116,3 +130,7 @@ func calculate_movement_parameters() -> void:
 
 func _on_coyote_timer_timeout() -> void:
 	jump_available = false
+
+
+func on_jump_buffer_timeout() -> void:
+	jump_buffer = false
