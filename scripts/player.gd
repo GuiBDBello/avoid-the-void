@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var jump_height: float = 2.0
 var jump_distance: float = 4.0
 
-@export var speed: float = 20.0
+@export var speed: float = 25.0
 var jump_velocity: float = 5.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -57,13 +57,13 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y -= fall_gravity * delta
 		
-		if Input.is_action_just_pressed("move_down"):
-			var collider = ray_cast.get_collider()
-			if collider is StaticBody3D:
-				collision_shape.disabled = true
-				while(ray_cast.get_collider() != null):
-					await get_tree().create_timer(.25).timeout
-				collision_shape.disabled = false
+		#if Input.is_action_just_pressed("move_down"):
+			#var collider = ray_cast.get_collider()
+			#if collider is StaticBody3D:
+				#collision_shape.disabled = true
+				#while(ray_cast.get_collider() != null):
+					#await get_tree().create_timer(.25).timeout
+				#collision_shape.disabled = false
 		
 		# Handle jump.
 		if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up")) and is_on_floor():

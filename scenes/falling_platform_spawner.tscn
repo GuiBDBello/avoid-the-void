@@ -6,7 +6,7 @@
 script = ExtResource("1_sal2k")
 
 [node name="Spawn Platform" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.5
 autostart = true
 
 [connection signal="timeout" from="Spawn Platform" to="." method="_on_spawn_platform_timeout"]
