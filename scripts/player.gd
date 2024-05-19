@@ -24,6 +24,10 @@ var fall_gravity: float = 5.0
 @onready var armature: Node3D = $Graphics/Armature_002
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+var jump_available: bool
+@export var coyote_time: float = 0.1
+@onready var coyote_timer: Timer = $"Coyote Timer"
+
 
 func _ready() -> void:
 	calculate_movement_parameters()
@@ -32,8 +36,8 @@ func _ready() -> void:
 func _input(event) -> void:
 	if GameManager.is_playable:
 		if event.is_action_released("jump") or event.is_action_released("move_up"):
-				if velocity.y > 0.0:
-					velocity.y *= 0.5
+			if velocity.y > 0.0:
+				velocity.y *= 0.5
 
 
 func _process(delta) -> void:
@@ -52,10 +56,18 @@ func _physics_process(delta: float) -> void:
 		
 		# Add the gravity.
 		if not is_on_floor():
+			if jump_available:
+				if coyote_timer.is_stopped():
+					coyote_timer.start(coyote_time)
+				#get_tree().create_timer(coyote_time).timeout.connect(coyote_timeout)
+				
 			if velocity.y > 0:
 				velocity.y -= jump_gravity * delta
 			else:
 				velocity.y -= fall_gravity * delta
+		else:
+			jump_available = true
+			coyote_timer.stop()
 		
 		#if Input.is_action_just_pressed("move_down"):
 			#var collider = ray_cast.get_collider()
@@ -66,7 +78,7 @@ func _physics_process(delta: float) -> void:
 				#collision_shape.disabled = false
 		
 		# Handle jump.
-		if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up")) and is_on_floor():
+		if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up")) and jump_available:
 			animation_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			velocity.y = jump_velocity
 
@@ -100,3 +112,7 @@ func calculate_movement_parameters() -> void:
 	#speed = jump_distance / (jump_peak_time * jump_fall_time)
 	jump_distance = speed * (jump_peak_time * jump_fall_time)
 	print("Jump Distance: ", jump_distance)
+
+
+func _on_coyote_timer_timeout() -> void:
+	jump_available = false
