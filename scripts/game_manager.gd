@@ -48,6 +48,8 @@ func _on_rocketship_player_reached_rocketship() -> void:
 	GameManager.is_playable = false
 	# animação do player fugindo
 	game_menu.show_end_game_menu(level_timer)
+	GameManager.animation_player.speed_scale = 1.0
+	GameManager.animation_player.play("cutscene_game_win")
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
