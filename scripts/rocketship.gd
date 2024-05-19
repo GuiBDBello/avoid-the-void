@@ -18,7 +18,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 
 func ignite(emitting: bool) -> void:
-	static_flame.emitting = emitting
-	flames.emitting = emitting
-	smoke.emitting = emitting
-	particles_floating.emitting = emitting
+	flames.visible = emitting
+	smoke.visible = emitting
+	particles_floating.visible = emitting

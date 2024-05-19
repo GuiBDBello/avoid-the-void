@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl2pfpk7w2unc"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_pqvrk"]
-[ext_resource type="Texture2D" uid="uid://cchagnmcee8wd" path="res://assets/vfx/T_VFX_CircleFit1.png" id="2_4f5an"]
+[ext_resource type="Texture2D" uid="uid://drlcxp2eam5wi" path="res://assets/progress-circle.png" id="2_acbw1"]
 
 [node name="Game Manager" type="Node"]
 script = ExtResource("1_pqvrk")
@@ -26,8 +26,8 @@ size_flags_vertical = 4
 value = 33.0
 rounded = true
 fill_mode = 4
-texture_under = ExtResource("2_4f5an")
-texture_progress = ExtResource("2_4f5an")
+texture_under = ExtResource("2_acbw1")
+texture_progress = ExtResource("2_acbw1")
 tint_under = Color(1, 1, 1, 0)
 tint_over = Color(1, 1, 1, 0)
 

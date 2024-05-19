@@ -250,8 +250,8 @@ draw_pass_1 = SubResource("QuadMesh_5kc56")
 
 [node name="Flames" type="GPUParticles3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+visible = false
 material_override = SubResource("ShaderMaterial_ye6dy")
-emitting = false
 amount = 20
 lifetime = 1.2
 process_material = SubResource("ParticleProcessMaterial_fsetf")
@@ -259,9 +259,9 @@ draw_pass_1 = SubResource("QuadMesh_n3rpw")
 
 [node name="Smoke" type="GPUParticles3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+visible = false
 sorting_offset = -1.0
 material_override = SubResource("ShaderMaterial_ye6dy")
-emitting = false
 amount = 20
 lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_4i8p6")
@@ -270,7 +270,6 @@ draw_pass_1 = SubResource("QuadMesh_n3rpw")
 [node name="Particles Floating" type="GPUParticles3D" parent="Fire"]
 sorting_offset = 1.0
 material_override = SubResource("ShaderMaterial_21of8")
-emitting = false
 amount = 50
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_48td2")

@@ -1,6 +1,10 @@
 extends Control
 
 
+func _ready() -> void:
+	GameManager.canvas_layer.visible = false
+
+
 func _on_play_button_pressed() -> void:
 	Transition.transition()
 	await Transition.on_transition_finished
