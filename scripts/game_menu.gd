@@ -4,6 +4,7 @@ extends Control
 @onready var game_over_menu: Control = $"CanvasLayer/Game Over Menu"
 @onready var end_game_menu: Control = $"CanvasLayer/End Game Menu"
 @onready var label: Label = $"CanvasLayer/End Game Menu/Panel/VBoxContainer/Label"
+@onready var time_label: Label = $"CanvasLayer/End Game Menu/Panel/VBoxContainer/Time Label"
 
 
 func _ready() -> void:
@@ -28,7 +29,7 @@ func show_game_over_menu() -> void:
 
 
 func show_end_game_menu(level_time: float) -> void:
-	label.text = str("You escaped The Void!\nTime: ", round_to_dec(level_time, 3))
+	time_label.text = str("Time: ", round_to_dec(level_time, 3))
 	end_game_menu.visible = true
 
 

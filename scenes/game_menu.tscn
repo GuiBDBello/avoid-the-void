@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm4igqobckdf1"]
+[gd_scene load_steps=3 format=3 uid="uid://dm4igqobckdf1"]
 
 [ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_c4804"]
+[ext_resource type="FontFile" uid="uid://bfkcm20i085nk" path="res://assets/fonts/Danfo/Danfo-Regular-VariableFont_ELSH.ttf" id="2_ofa2r"]
 
 [node name="Game Menu" type="Control"]
 layout_mode = 3
@@ -14,6 +15,7 @@ script = ExtResource("1_c4804")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Game Over Menu" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,18 +50,23 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/Game Over Menu/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ofa2r")
+theme_override_font_sizes/font_size = 18
 text = "You were absorbed by The Void."
 
 [node name="Restart Button" type="Button" parent="CanvasLayer/Game Over Menu/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ofa2r")
+theme_override_font_sizes/font_size = 36
 text = "Restart"
 
 [node name="Main Menu Button" type="Button" parent="CanvasLayer/Game Over Menu/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ofa2r")
+theme_override_font_sizes/font_size = 36
 text = "Main Menu"
 
 [node name="End Game Menu" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,15 +105,26 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/End Game Menu/Panel/VBoxContainer"]
 layout_mode = 2
-text = "You escaped The Void!
-Time: 00:00.000"
+theme_override_fonts/font = ExtResource("2_ofa2r")
+theme_override_font_sizes/font_size = 25
+text = "You escaped The Void!"
+
+[node name="Time Label" type="Label" parent="CanvasLayer/End Game Menu/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ofa2r")
+theme_override_font_sizes/font_size = 36
+text = "Time: 00:00.000"
 
 [node name="Restart Button" type="Button" parent="CanvasLayer/End Game Menu/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ofa2r")
+theme_override_font_sizes/font_size = 36
 text = "Restart"
 
 [node name="Main Menu Button" type="Button" parent="CanvasLayer/End Game Menu/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ofa2r")
+theme_override_font_sizes/font_size = 36
 text = "Main Menu"
 
 [connection signal="pressed" from="CanvasLayer/Game Over Menu/Panel/VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]

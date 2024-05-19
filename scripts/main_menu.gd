@@ -1,8 +1,12 @@
-extends Control
+extends Node
+
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
 	GameManager.canvas_layer.visible = false
+	animation_player.play("main_menu")
 
 
 func _on_play_button_pressed() -> void:
