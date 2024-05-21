@@ -1,6 +1,14 @@
 # aVoid (the Void)
 
-Game made for the [Godot Wild Jam #69](https://itch.io/jam/godot-wild-jam-69), between May 10th and 19th of 2024.
+## Play
+
+Game page on itch.io: https://guibdbello.itch.io/avoid-the-void
+
+## Game Jam
+
+This game was made for [Godot Wild Jam #69](https://itch.io/jam/godot-wild-jam-69) which took place between May 10th and May 19th of 2024.
+
+Theme: Void.
 
 ## Game Design Document
 
