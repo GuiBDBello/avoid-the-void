@@ -12,7 +12,7 @@
   Escape the Void, save yourself.
   <br />
   <br />
-  <a href="">Play Game</a>
+  <a href="https://guibdbello.itch.io/avoid-the-void">Play Game</a>
   ·
   <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
   ·
