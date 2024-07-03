@@ -65,7 +65,7 @@ To get a local copy up and running follow the steps below.
 
 ### Configuration
 
-1. Clone repository: `git clone https://github.com/GuiBDBello/godot-maze-generator.git`.
+1. Clone repository: `git clone https://github.com/GuiBDBello/avoid-the-void.git`.
 1. Import the project in Godot: `Import > Select the project folder > Import & Edit`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
